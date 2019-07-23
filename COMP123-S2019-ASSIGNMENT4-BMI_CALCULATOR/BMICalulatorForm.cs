@@ -10,11 +10,20 @@ using System.Windows.Forms;
 
 namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
 {
-    public partial class Form1 : Form
+    public partial class BMICalculatorForm : Form
     {
-        public Form1()
+        public BMICalculatorForm()
         {
             InitializeComponent();
+        }
+
+        private void ImperialRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ImperialRadioButton.Checked == true)
+            {
+                MetricRadioButton.Checked = false;
+            }
+          
         }
     }
 }
