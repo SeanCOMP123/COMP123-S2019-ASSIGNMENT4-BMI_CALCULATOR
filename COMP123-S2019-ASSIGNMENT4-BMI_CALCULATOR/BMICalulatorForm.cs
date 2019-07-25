@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
 {
+
     public partial class BMICalculatorForm : Form
     {
+
         public BMICalculatorForm()
         {
             InitializeComponent();
+
         }
 
         private void ImperialRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -23,7 +26,125 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
             {
                 MetricRadioButton.Checked = false;
             }
-          
+            MyHeightTextBox.Text = "inches";
+            MyHeightTextBox.ForeColor = Color.LightSteelBlue;
+            MyWeightTextBox.Text = "pounds";
+            MyWeightTextBox.ForeColor = Color.LightSteelBlue;
+
+
         }
+        private void MetricRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MetricRadioButton.Checked == true)
+            {
+                ImperialRadioButton.Checked = false;
+            }
+            MyHeightTextBox.Text = "cm";
+            MyHeightTextBox.ForeColor = Color.LightSteelBlue;
+            MyWeightTextBox.Text = "kg";
+            MyWeightTextBox.ForeColor = Color.LightSteelBlue;
+
+        }
+        private void MyHeightTextBox_Click(object sender, EventArgs e)
+        {
+            MyHeightTextBox.Text = "";
+            MyHeightTextBox.ForeColor = Color.Black;
+  
+        }
+
+        private void MyWeightTextBox_Click(object sender, EventArgs e)
+        {
+            MyWeightTextBox.Text = "";
+            MyWeightTextBox.ForeColor = Color.Black;
+        }
+        private void CalculateBMIButton_Click(object sender, EventArgs e)
+        {
+
+            double weight;
+            double height;
+            
+            weight = double.Parse(MyWeightTextBox.Text);
+            height = double.Parse(MyHeightTextBox.Text);
+
+            if (ImperialRadioButton.Checked)
+            {
+                double bmi = (weight * 703.0) / (height * height);
+                BMIOutputLabel.Text = Math.Round(bmi,2).ToString();
+             
+                
+
+                if (bmi < 18.5 && bmi >= 0)
+                {
+                    BMICategoryOutputBox.BackColor = Color.LightBlue;
+                    BMICategoryOutputBox.ForeColor = Color.White;
+                    BMICategoryOutputBox.Text = "Your are underweight!";
+                }
+                else if (bmi >= 18.5 && bmi <= 24.9)
+                {
+                    BMICategoryOutputBox.BackColor = Color.Green;
+                    BMICategoryOutputBox.ForeColor = Color.White;
+                    BMICategoryOutputBox.Text = "You are normal weight!";
+                }
+                else if (bmi >= 25.0 && bmi <= 29.9)
+                {
+                    BMICategoryOutputBox.BackColor = Color.Orange;
+                    BMICategoryOutputBox.ForeColor = Color.White;
+                    BMICategoryOutputBox.Text = "You are overweight!";
+                }
+                else
+                {
+                    BMICategoryOutputBox.BackColor = Color.Red;
+                    BMICategoryOutputBox.ForeColor = Color.White;
+                    BMICategoryOutputBox.Text = "Your are obese!";
+                }
+            }
+
+          if(MetricRadioButton.Checked)
+                {
+                    double bmi = weight / (height/100.0 * height/100.0);
+                    BMIOutputLabel.Text = Math.Round(bmi,2).ToString();
+
+                if (bmi < 18.5 && bmi >= 0)
+                {
+                    BMICategoryOutputBox.BackColor = Color.LightBlue;
+                    BMICategoryOutputBox.ForeColor = Color.White;
+                    BMICategoryOutputBox.Text = "Your are underweight!";
+                }
+                else if (bmi >= 18.5 && bmi <= 24.9)
+                {
+                    BMICategoryOutputBox.BackColor = Color.Green;
+                    BMICategoryOutputBox.ForeColor = Color.White;
+                    BMICategoryOutputBox.Text = "You are normal weight!";
+                }
+                else if (bmi >= 25.0 && bmi <= 29.9)
+                {
+                    BMICategoryOutputBox.BackColor = Color.Orange;
+                    BMICategoryOutputBox.ForeColor = Color.White;
+                    BMICategoryOutputBox.Text = "You are overweight!";
+                }
+                else
+                {
+                    BMICategoryOutputBox.BackColor = Color.Red;
+                    BMICategoryOutputBox.ForeColor = Color.White;
+                    BMICategoryOutputBox.Text = "Your are obese!";
+                }
+            }
+        }
+
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            MyHeightTextBox.Text = "inches";
+            MyHeightTextBox.ForeColor = Color.LightSteelBlue;
+            MyWeightTextBox.Text = "pounds";
+            MyWeightTextBox.ForeColor = Color.LightSteelBlue;
+            BMICategoryOutputBox.Text = "";
+            BMICategoryOutputBox.BackColor = Color.White;
+            BMIOutputLabel.Text = "";
+        }
+
+        
+
+      
     }
 }
