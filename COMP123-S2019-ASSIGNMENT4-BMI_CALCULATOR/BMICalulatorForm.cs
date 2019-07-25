@@ -82,12 +82,11 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CalculateBMIButton_Click(object sender, EventArgs e)
-        {
+        { 
             try
             {
-                weight = double.Parse(MyWeightTextBox.Text);
                 height = double.Parse(MyHeightTextBox.Text);
-
+                weight = double.Parse(MyWeightTextBox.Text);
                 //Condition when Imperial radio button is checked
                 if (ImperialRadioButton.Checked && MyHeightTextBox.Text != string.Empty && MyWeightTextBox.Text != string.Empty)
                 {
@@ -205,35 +204,46 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
         /// <param name="e"></param>
         private void MyHeightTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (MyHeightTextBox.Text==string.Empty)
+            
+            if (ImperialRadioButton.Checked && MyHeightTextBox.Text==string.Empty)
+            {
+                ErrorMessageLabel.Text = "please enter your height";
+                ErrorMessageLabel.Visible = true;
+                e.Cancel = true;           
+            }
+            else if (MetricRadioButton.Checked && MyHeightTextBox.Text == string.Empty)
             {
                 ErrorMessageLabel.Text = "please enter your height";
                 ErrorMessageLabel.Visible = true;
                 e.Cancel = true;
-           
             }
-            if (MetricRadioButton.Checked && MyHeightTextBox.Text.Length >=4)
+            else if(ImperialRadioButton.Checked && double.TryParse(MyHeightTextBox.Text,out height)==false)
+            {
+                ErrorMessageLabel.Text = "please enter numbers only";
+                ErrorMessageLabel.Visible = true;
+                e.Cancel = true;
+            }
+            else if (MetricRadioButton.Checked && double.TryParse(MyHeightTextBox.Text, out height) == false)
+            {
+                ErrorMessageLabel.Text = "please enter numbers only";
+                ErrorMessageLabel.Visible = true;
+                e.Cancel = true;
+            }
+            else if (ImperialRadioButton.Checked && MyHeightTextBox.Text != string.Empty && double.Parse(MyHeightTextBox.Text) > 100)
+            {             
+                    ErrorMessageLabel.Text = "please enter your correct height";
+                    ErrorMessageLabel.Visible = true;
+                    e.Cancel = true;          
+            }
+            else if (MetricRadioButton.Checked && MyHeightTextBox.Text != string.Empty && double.Parse(MyHeightTextBox.Text) > 250)
             {
                 ErrorMessageLabel.Text = "please enter your correct height";
                 ErrorMessageLabel.Visible = true;
                 e.Cancel = true;
             }
-            if (ImperialRadioButton.Checked && MyHeightTextBox.Text.Length >=3)
-            {
-                ErrorMessageLabel.Text = "please enter your correct height";
-                ErrorMessageLabel.Visible = true;
-                e.Cancel = true;
-            }
+
         }
-        /// <summary>
-        /// This is an event handler for form click close button in the window form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BMICalculatorForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
+        
         /// <summary>
         /// This is an event handler for validating MyweightTextBox
         /// </summary>
@@ -241,26 +251,44 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
         /// <param name="e"></param>
         private void MyWeightTextBox_Validating(object sender, CancelEventArgs e)
         {
-            if(MyWeightTextBox.Text == string.Empty)
+            if (ImperialRadioButton.Checked && MyWeightTextBox.Text == string.Empty)
+            {
+                ErrorMessageLabel.Text = "please enter your weight";
+                ErrorMessageLabel.Visible = true;
+                e.Cancel = true;
+            }
+            else if (MetricRadioButton.Checked && MyWeightTextBox.Text == string.Empty)
             {
                 ErrorMessageLabel.Text = "please enter your weight";
                 ErrorMessageLabel.Visible = true;
                 e.Cancel = true;
 
             }
-            if (MetricRadioButton.Checked && MyWeightTextBox.Text.Length >= 4)
+            else if (ImperialRadioButton.Checked && double.TryParse(MyWeightTextBox.Text, out height) == false)
+            {
+                ErrorMessageLabel.Text = "please enter numbers only";
+                ErrorMessageLabel.Visible = true;
+                e.Cancel = true;
+            }
+            else if (MetricRadioButton.Checked && double.TryParse(MyWeightTextBox.Text, out height) == false)
+            {
+                ErrorMessageLabel.Text = "please enter numbers only";
+                ErrorMessageLabel.Visible = true;
+                e.Cancel = true;
+            }
+            else if (ImperialRadioButton.Checked && MyWeightTextBox.Text != string.Empty && double.Parse(MyWeightTextBox.Text) > 1600)
             {
                 ErrorMessageLabel.Text = "please enter your correct weight";
                 ErrorMessageLabel.Visible = true;
                 e.Cancel = true;
             }
-            if (ImperialRadioButton.Checked && MyWeightTextBox.Text.Length >= 5)
+            else if (MetricRadioButton.Checked && MyWeightTextBox.Text != string.Empty && double.Parse(MyWeightTextBox.Text) > 700)
             {
-                ErrorMessageLabel.Text = "please enter your correct height";
+                ErrorMessageLabel.Text = "please enter your correct weight";
                 ErrorMessageLabel.Visible = true;
                 e.Cancel = true;
             }
-            
+
         }
         /// <summary>
         /// This event handler occur when the validation is successed
@@ -275,6 +303,15 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
         private void MyWeightTextBox_Validated(object sender, EventArgs e)
         {
             ErrorMessageLabel.Visible = false;
+        }
+        /// <summary>
+        /// This is an event handler for form click close button in the window form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BMICalculatorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
