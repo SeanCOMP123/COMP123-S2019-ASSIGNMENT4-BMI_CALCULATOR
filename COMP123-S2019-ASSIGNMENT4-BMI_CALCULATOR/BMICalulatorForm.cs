@@ -83,17 +83,23 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
 
             double weight;
             double height;
-            
+
             weight = double.Parse(MyWeightTextBox.Text);
             height = double.Parse(MyHeightTextBox.Text);
 
             //Condition when Imperial radiobutton is checked
-            if (ImperialRadioButton.Checked)
+            ImperialCalculation(weight, height);
+
+            //Condition when Metric radio button is checked
+            MetricCalculation(weight, height);
+        }
+
+        private void MetricCalculation(double weight, double height)
+        {
+            if (MetricRadioButton.Checked)
             {
-                double bmi = (weight * 703.0) / (height * height);
-                BMIOutputLabel.Text = Math.Round(bmi,2).ToString();
-             
-                
+                double bmi = weight / (height / 100.0 * height / 100.0);
+                BMIOutputLabel.Text = Math.Round(bmi, 2).ToString();
 
                 if (bmi < 18.5 && bmi >= 0)
                 {
@@ -120,12 +126,14 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
                     BMICategoryOutputBox.Text = "Your are obese!";
                 }
             }
+        }
 
-          //Condition when Metric radio button is checked
-          if(MetricRadioButton.Checked)
-                {
-                    double bmi = weight / (height/100.0 * height/100.0);
-                    BMIOutputLabel.Text = Math.Round(bmi,2).ToString();
+        private void ImperialCalculation(double weight, double height)
+        {
+            if (ImperialRadioButton.Checked)
+            {
+                double bmi = (weight * 703.0) / (height * height);
+                BMIOutputLabel.Text = Math.Round(bmi, 2).ToString();
 
                 if (bmi < 18.5 && bmi >= 0)
                 {
