@@ -251,11 +251,14 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
         /// <param name="e"></param>
         private void MyWeightTextBox_Validating(object sender, CancelEventArgs e)
         {
+           
             if (ImperialRadioButton.Checked && MyWeightTextBox.Text == string.Empty)
             {
                 ErrorMessageLabel.Text = "please enter your weight";
                 ErrorMessageLabel.Visible = true;
                 e.Cancel = true;
+             
+
             }
             else if (MetricRadioButton.Checked && MyWeightTextBox.Text == string.Empty)
             {

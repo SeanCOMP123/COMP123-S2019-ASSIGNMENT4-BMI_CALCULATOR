@@ -8,6 +8,7 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
 {
     static class Program
     {
+        public static Dictionary<FormType, Form> Forms;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,11 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BMICalculatorForm());
+
+            Forms = new Dictionary<FormType, Form>();
+            Forms.Add(FormType.START_FORM, new StartForm());
+            Forms.Add(FormType.MAIN_FORM, new BMICalculatorForm());
+            Application.Run(new StartForm());
         }
     }
 }
