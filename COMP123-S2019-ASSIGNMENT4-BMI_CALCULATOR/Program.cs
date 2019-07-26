@@ -25,9 +25,9 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
             Application.SetCompatibleTextRenderingDefault(false);
 
             Forms = new Dictionary<FormType, Form>();
-            Forms.Add(FormType.START_FORM, new StartForm());
-            Forms.Add(FormType.MAIN_FORM, new BMICalculatorForm());
-            Application.Run(new StartForm());
+            Forms.Add(FormType.START_FORM, new StartForm()); //add startform
+            Forms.Add(FormType.MAIN_FORM, new BMICalculatorForm()); //add BMI_calculator form
+            Application.Run(new StartForm()); //run startform for splash screen
         }
     }
 }
