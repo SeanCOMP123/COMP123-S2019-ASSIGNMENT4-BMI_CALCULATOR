@@ -121,7 +121,7 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
             {
                 BMICategoryOutputBox.BackColor = Color.LightBlue;
                 BMICategoryOutputBox.ForeColor = Color.White;
-                BMICategoryOutputBox.Text = "Your are underweight!";
+                BMICategoryOutputBox.Text = "You are underweight!";
             }
             else if (bmi >= 18.5 && bmi <= 24.9)
             {
@@ -157,7 +157,7 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
         {
             BMICategoryOutputBox.BackColor = Color.LightBlue;
             BMICategoryOutputBox.ForeColor = Color.White;
-            BMICategoryOutputBox.Text = "Your are underweight!";
+            BMICategoryOutputBox.Text = "You are underweight!";
         }
         else if (bmi >= 18.5 && bmi <= 24.9)
         {
@@ -175,7 +175,7 @@ namespace COMP123_S2019_ASSIGNMENT4_BMI_CALCULATOR
         {
             BMICategoryOutputBox.BackColor = Color.Red;
             BMICategoryOutputBox.ForeColor = Color.White;
-            BMICategoryOutputBox.Text = "Your are obese!";
+            BMICategoryOutputBox.Text = "You are obese!";
         }
     }
 
