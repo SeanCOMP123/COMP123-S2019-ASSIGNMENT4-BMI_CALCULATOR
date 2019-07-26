@@ -40,16 +40,16 @@
             this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
+            this.WelcomeLabel.Location = new System.Drawing.Point(12, 33);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(296, 228);
             this.WelcomeLabel.TabIndex = 0;
-            this.WelcomeLabel.Text = "Welcome to My BMI Calulator";
+            this.WelcomeLabel.Text = "Welcome to My BMI Calculator";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SplashTimer
             // 
-            this.SplashTimer.Interval = 2000;
+            this.SplashTimer.Interval = 3000;
             this.SplashTimer.Tick += new System.EventHandler(this.SplashTimer_Tick);
             // 
             // LoadingProgressBar
